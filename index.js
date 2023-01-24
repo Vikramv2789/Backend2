@@ -10,7 +10,6 @@ const courses = [
 app.post('/api/courses', (req,res)=> {
     if(Object.values(req.body)[0].length > 3){
         const course ={
-            //we assign an ID and a name property
             id: courses.length +1,
             name:req.body.name    
         }
@@ -31,7 +30,6 @@ app.put('/api/courses/:id', (req,res)=>{
     }
     else if(Object.values(req.body)[0].length > 3){
         const newCourse ={
-            //we assign an ID and a name property
             id: req.params.id,
             name:req.body.name    
         }
@@ -46,11 +44,6 @@ app.put('/api/courses/:id', (req,res)=>{
 });
 
 app.delete('/api/courses/:id', (req,res)=>{
-    //code the following logic
-    //look up the course by id
-        //return 404 if does not exist
-        //delete the course by index HINT: use the indexOf() and splice() methods
-        // return the response to the client the course that was deleted
         const course = courses.find(c=> c.id === parseInt(req.params.id));
         if(!course){
             res.status(404).send("The course with the given ID was not found");
